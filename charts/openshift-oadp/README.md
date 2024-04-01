@@ -9,46 +9,13 @@ It uses the Subchart:
 * [helper-operator](https://github.com/tjungbauer/helm-charts/tree/main/charts/helper-operator): to create the required Operator resources
 * [helper-status-checker](https://github.com/tjungbauer/helm-charts/tree/main/charts/helper-operator): to verify if the Deployments of this Operator are running.
 
-It is best used with a GitOps approach such as Argo CD does. For example, https://github.com/tjungbauer/openshift-clusterconfig-gitops
+It is chart is to be used with a GitOps approach such as Argo CD does. For example, https://github.com/tjungbauer/openshift-clusterconfig-gitops
 
-## TL;DR
-
-```console
-helm repo add --force-update tjungbauer https://charts.stderr.at
-helm repo update
-```
 
 ## Prerequisites
 
 * Kubernetes 1.12+
 * Helm 3
-
-## Installing the Chart
-
-To install the chart with the release name `my-release`:
-
-```console
-helm install my-release luisbazo/openshift-oadp
-```
-
-The command deploys the chart on the Kubernetes cluster in the default configuration.
-
-## Uninstalling the Chart
-
-To uninstall/delete the my-release deployment:
-
-```console
-helm delete my-release
-```
-
-The command removes all the Kubernetes components associated with the chart and deletes the release.
-
-## Parameters
-The following table lists the configurable parameters of the chart and their default values. Only variables of this specific Helm Chart are listed. For the values of the Subchart read the appropriate README of the Subcharts.
-
-| Parameter                                 | Description                                   | Default                                                 |
-|-------------------------------------------|-----------------------------------------------|---------------------------------------------------------|
-| `loggingConfig.enabled` | Configure Cluster Logging | `` |
 
 
 ## Example

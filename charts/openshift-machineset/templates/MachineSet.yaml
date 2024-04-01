@@ -1,0 +1,51 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  annotations:
+    machine.openshift.io/memoryMb: {{ $values.vsphere.memoryMiB }}
+    machine.openshift.io/vCPU: {{ $values.vsphere.numCPUs }}
+  name: {{ $values.machine-set.prefix }}-{{ $values.machine-set.role }}-0
+  namespace: openshift-machine-api
+  labels:
+    machine.openshift.io/cluster-api-cluster: {{ $values.vsphere.prefix }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: {{ $values.vsphere.prefix }}
+      machine.openshift.io/cluster-api-machineset: {{ $values.machine-set.prefix }}-{{ $values.machine-set.role }}-0
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: {{ $values.machine-set.prefix }}
+        machine.openshift.io/cluster-api-machine-role: {{ $values.machine-set.role }}
+        machine.openshift.io/cluster-api-machine-type: {{ $values.machine-set.role }}
+        machine.openshift.io/cluster-api-machineset: {{ $values.machine-set.prefix }}-{{ $values.machine-set.role }}-0
+    spec:
+      lifecycleHooks: {}
+      metadata: {}
+      providerSpec:
+        value:
+          numCoresPerSocket: {{ $values.vsphere.numCoresPerSocket }}
+          diskGiB: {{ $values.vsphere.diskGiB }}
+          snapshot: ''
+          userDataSecret:
+            name: {{ $values.vsphere.userDataSecret }}
+          memoryMiB: {{ $values.vsphere.memoryMiB }}
+          credentialsSecret:
+            name: {{ $values.vsphere.credentialsSecret }}
+          network:
+            devices:
+              - networkName: {{ $values.vsphere.networkName }}
+          metadata:
+            creationTimestamp: null
+          numCPUs: {{ $values.vsphere.numCPUs }}
+          kind: VSphereMachineProviderSpec
+          workspace:
+            datacenter: {{ $values.vsphere.datacenter }}
+            datastore: {{ $values.vsphere.datastore }}
+            folder: {{ $values.vsphere.folder }}
+            resourcePool: {{ $values.vsphere.resourcePool }}
+            server: {{ $values.vsphere.server }}
+          template: {{ $values.machine-set.prefix }}-rhcos-generated-region-generated-zone
+          apiVersion: machine.openshift.io/v1beta1
