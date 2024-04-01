@@ -2,7 +2,7 @@
 helper-operator:
   operators:
     redhat-oadp-operator:
-      enabled: false
+      enabled: true
       syncwave: '0'
       namespace:
         name: openshift-adp
