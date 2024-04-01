@@ -2,50 +2,50 @@ apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
   annotations:
-    machine.openshift.io/memoryMb: {{ $values.vsphere.memoryMiB }}
-    machine.openshift.io/vCPU: {{ $values.vsphere.numCPUs }}
-  name: {{ $values.machine-set.prefix }}-{{ $values.machine-set.role }}-0
+    machine.openshift.io/memoryMb: {{ $value.vsphere.memoryMiB }}
+    machine.openshift.io/vCPU: {{ $value.vsphere.numCPUs }}
+  name: {{ $value.machine-set.prefix }}-{{ $value.machine-set.role }}-0
   namespace: openshift-machine-api
   labels:
-    machine.openshift.io/cluster-api-cluster: {{ $values.vsphere.prefix }}
+    machine.openshift.io/cluster-api-cluster: {{ $value.vsphere.prefix }}
 spec:
-  replicas: {{ $values.machine-set.replicas }}
+  replicas: {{ $value.machine-set.replicas }}
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: {{ $values.vsphere.prefix }}
-      machine.openshift.io/cluster-api-machineset: {{ $values.machine-set.prefix }}-{{ $values.machine-set.role }}-0
+      machine.openshift.io/cluster-api-cluster: {{ $value.vsphere.prefix }}
+      machine.openshift.io/cluster-api-machineset: {{ $value.machine-set.prefix }}-{{ $value.machine-set.role }}-0
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: {{ $values.machine-set.prefix }}
-        machine.openshift.io/cluster-api-machine-role: {{ $values.machine-set.role }}
-        machine.openshift.io/cluster-api-machine-type: {{ $values.machine-set.role }}
-        machine.openshift.io/cluster-api-machineset: {{ $values.machine-set.prefix }}-{{ $values.machine-set.role }}-0
+        machine.openshift.io/cluster-api-cluster: {{ $value.machine-set.prefix }}
+        machine.openshift.io/cluster-api-machine-role: {{ $value.machine-set.role }}
+        machine.openshift.io/cluster-api-machine-type: {{ $value.machine-set.role }}
+        machine.openshift.io/cluster-api-machineset: {{ $value.machine-set.prefix }}-{{ $value.machine-set.role }}-0
     spec:
       lifecycleHooks: {}
       metadata: {}
       providerSpec:
         value:
-          numCoresPerSocket: {{ $values.vsphere.numCoresPerSocket }}
-          diskGiB: {{ $values.vsphere.diskGiB }}
+          numCoresPerSocket: {{ $value.vsphere.numCoresPerSocket }}
+          diskGiB: {{ $value.vsphere.diskGiB }}
           snapshot: ''
           userDataSecret:
-            name: {{ $values.vsphere.userDataSecret }}
-          memoryMiB: {{ $values.vsphere.memoryMiB }}
+            name: {{ $value.vsphere.userDataSecret }}
+          memoryMiB: {{ $value.vsphere.memoryMiB }}
           credentialsSecret:
-            name: {{ $values.vsphere.credentialsSecret }}
+            name: {{ $value.vsphere.credentialsSecret }}
           network:
             devices:
-              - networkName: {{ $values.vsphere.networkName }}
+              - networkName: {{ $value.vsphere.networkName }}
           metadata:
             creationTimestamp: null
-          numCPUs: {{ $values.vsphere.numCPUs }}
+          numCPUs: {{ $value.vsphere.numCPUs }}
           kind: VSphereMachineProviderSpec
           workspace:
-            datacenter: {{ $values.vsphere.datacenter }}
-            datastore: {{ $values.vsphere.datastore }}
-            folder: {{ $values.vsphere.folder }}
-            resourcePool: {{ $values.vsphere.resourcePool }}
-            server: {{ $values.vsphere.server }}
-          template: {{ $values.machine-set.prefix }}-rhcos-generated-region-generated-zone
+            datacenter: {{ $value.vsphere.datacenter }}
+            datastore: {{ $value.vsphere.datastore }}
+            folder: {{ $value.vsphere.folder }}
+            resourcePool: {{ $value.vsphere.resourcePool }}
+            server: {{ $value.vsphere.server }}
+          template: {{ $value.machine-set.prefix }}-rhcos-generated-region-generated-zone
           apiVersion: machine.openshift.io/v1beta1
