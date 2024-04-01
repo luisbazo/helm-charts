@@ -11,7 +11,7 @@ helper-operator:
         channel: v4.2
         approval: Automatic
         operatorName: ibm-licensing-operator-app
-        source: ibm-licensing-catalog
+        source: ibm-operator-catalog
         sourceNamespace: openshift-marketplace
       operatorgroup:
         create: true
