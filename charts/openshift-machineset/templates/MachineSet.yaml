@@ -4,7 +4,7 @@ apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
   annotations:
-    machine.openshift.io/memoryMb: {{ .Values.machineset.prefix }}
+    machine.openshift.io/memoryMb: {{ .Values.machineset.vsphere.memoryMiB }}
     machine.openshift.io/vCPU: {{ .Values.machineset.vsphere.numCPUs }}
   name: {{ .Values.machineset.prefix }}-{{ .Values.machineset.role }}-0
   namespace: openshift-machine-api
