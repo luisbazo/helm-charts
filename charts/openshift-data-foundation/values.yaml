@@ -29,11 +29,11 @@ storagecluster:
 
     # -- Enable full deployment of ODF (incl. Ceph, S3 etc.)
     # @default -- false
-    enabled: false
+    enabled: enabled
 
     # -- Enable NFS or not
     # @default -- false
-    nfs: enabled
+    nfs: false
 
     # -- The label the nodes should have to allow hosting of ODF services
     # @default -- cluster.ocs.openshift.io/openshift-storage
@@ -79,7 +79,7 @@ storagecluster:
 
             # -- Name of the stroageclass
             # The class must exist upfront and is currently not created by this chart.
-            storageClassName: gp3-csi
+            storageClassName: thin-csi
 
             # -- volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.
             # @default -- Block
