@@ -29,7 +29,7 @@ storagecluster:
 
     # -- Enable full deployment of ODF (incl. Ceph, S3 etc.)
     # @default -- false
-    enabled: enabled
+    enabled: true
 
     # -- Enable NFS or not
     # @default -- false
@@ -146,7 +146,7 @@ helper-operator:
       syncwave: '0'
       namespace:
         name: openshift-storage
-        create: false
+        create: true
       subscription:
         channel: stable-4.14
         approval: Automatic
