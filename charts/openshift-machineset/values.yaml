@@ -2,17 +2,18 @@
 machine-set:
   prefix: ocpinstall-rd8fr
   role: infra
+  enabled: true
   replicas: 3
-vsphere:
-  numCoresPerSocket: 4
-  diskGiB: 120
-  userDataSecret: worker-user-data
-  credentialsSecret: vsphere-cloud-credentials
-  networkName: gym-6630026hom-yjcanuzn-segment
-  numCPUs: 4
-  datacenter: IBMCloud
-  datastore: '/IBMCloud/datastore/gym-6630026hom-yjcanuzn-storage'
-  folder: '/IBMCloud/vm/ocpgym-wdc/gym-6630026hom-yjcanuzn/IPI'
-  resourcePool: '/IBMCloud/host/ocpgym-wdc/Resources/Cluster Resource Pool/Gym Member Resource Pool/gym-6630026hom-yjcanuzn'
-  server: ocpgymwdc-vc.techzone.ibm.local
-  memoryMiB: 16384
+  vsphere:
+    numCoresPerSocket: 4
+    diskGiB: 120
+    userDataSecret: worker-user-data
+    credentialsSecret: vsphere-cloud-credentials
+    networkName: gym-6630026hom-yjcanuzn-segment
+    numCPUs: 4
+    datacenter: IBMCloud
+    datastore: '/IBMCloud/datastore/gym-6630026hom-yjcanuzn-storage'
+    folder: '/IBMCloud/vm/ocpgym-wdc/gym-6630026hom-yjcanuzn/IPI'
+    resourcePool: '/IBMCloud/host/ocpgym-wdc/Resources/Cluster Resource Pool/Gym Member Resource Pool/gym-6630026hom-yjcanuzn'
+    server: ocpgymwdc-vc.techzone.ibm.local
+    memoryMiB: 16384
