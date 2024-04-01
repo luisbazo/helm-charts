@@ -2,6 +2,7 @@
 machine-set:
   prefix: ocpinstall-rd8fr
   role: infra
+  replicas: 3
 vsphere:
   numCoresPerSocket: 4
   diskGiB: 120

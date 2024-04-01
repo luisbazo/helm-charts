@@ -9,7 +9,7 @@ metadata:
   labels:
     machine.openshift.io/cluster-api-cluster: {{ $values.vsphere.prefix }}
 spec:
-  replicas: 3
+  replicas: {{ $values.machine-set.replicas }}
   selector:
     matchLabels:
       machine.openshift.io/cluster-api-cluster: {{ $values.vsphere.prefix }}
