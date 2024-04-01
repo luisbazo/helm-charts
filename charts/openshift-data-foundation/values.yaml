@@ -142,7 +142,7 @@ storagecluster:
 helper-operator:
   operators:
     odf-operator:
-      enabled: false
+      enabled: true
       syncwave: '0'
       namespace:
         name: openshift-storage
