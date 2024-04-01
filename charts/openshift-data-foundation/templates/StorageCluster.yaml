@@ -1,7 +1,7 @@
 {{- with .Values.storagecluster }}
 {{ if eq ( .enabled | toString) "true" }}
 {{- with .full_deployment }}
-{{- if eq ( .enabled | toString) "true" }}  
+{{- if eq ( .enabled | toString) "true" }}
 apiVersion: ocs.openshift.io/v1
 kind: StorageCluster
 metadata:
@@ -16,9 +16,9 @@ spec:
   storageDeviceSets:
     {{- range $key, $value := .storageDeviceSets }}
     - name: {{ $value.name | default "ocs-deviceset" }}
-      {{- if $value.resources }}  
+      {{- if $value.resources }}
       resources:
-        {{- if $value.resources.limits }}  
+        {{- if $value.resources.limits }}
         limits:
           {{- if $value.resources.limits.cpu }}
           cpu: {{ $value.resources.limits.cpu | default "2" }}
@@ -55,9 +55,9 @@ spec:
     {{- end }}
 
   {{- if .compontent_resources }}
-  {{- with .compontent_resources }} 
+  {{- with .compontent_resources }}
   resources:
-    
+
     {{- if .mds }}
     {{- with .mds }}
     mds:
@@ -81,7 +81,7 @@ spec:
       {{- end }}
     {{- end }}
     {{- end }}
-    
+
     {{- if .rgw }}
     {{- with .rgw }}
     rgw:
@@ -174,7 +174,7 @@ spec:
         {{- if .requests.memory }}
         memory: {{ .requests.memory | default "4Gi" }}
         {{- end }}
-      {{- end }}    
+      {{- end }}
     {{- end }}
     {{- end }}
 
@@ -198,7 +198,7 @@ spec:
         {{- if .requests.memory }}
         memory: {{ .requests.memory | default "4Gi" }}
         {{- end }}
-      {{- end }}    
+      {{- end }}
     {{- end }}
     {{- end }}
 
@@ -210,8 +210,8 @@ spec:
   {{- end }}
   nodeTopologies:
     labels:
-      {{- if .default_node_label }}
-      {{ printf "%s:" .default_node_label }} 
+      {{- if .default_node_label }} 
+      cluster.ocs.openshift.io/openshift-storage: ''
       {{- else }}
       cluster.ocs.openshift.io/openshift-storage: ''
       {{- end }}
