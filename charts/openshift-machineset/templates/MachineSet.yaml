@@ -1,56 +1,52 @@
-{{- range $key, $value := .Values.config }}
-{{- if eq ($value.machineset.enabled | toString) "true" }}
 ---
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
-  name: {{ $value.machineset.prefix }}-{{ $value.machineset.role }}-0
+  name: {{ .Values.machineset.prefix }}-{{ .Values.machineset.role }}-0
   namespace: openshift-machine-api
   labels:
-    machine.openshift.io/cluster-api-cluster: {{ $value.machineset.prefix }}
-    {{- if eq ( $value.machineset.storage_machineset | toString) "true" }}
+    machine.openshift.io/cluster-api-cluster: {{ .Values.machineset.prefix }}
+    {{- if eq ( .Values.machineset.storage_machineset | toString) "true" }}
     cluster.ocs.openshift.io/openshift-storage: ''
     {{- end }}
 spec:
-  replicas: {{ $value.machineset.replicas }}
+  replicas: {{ .Values.machineset.replicas }}
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: {{ $value.machineset.prefix }}
-      machine.openshift.io/cluster-api-machineset: {{ $value.machineset.prefix }}-{{ $value.machineset.role }}-0
+      machine.openshift.io/cluster-api-cluster: {{ .Values.machineset.prefix }}
+      machine.openshift.io/cluster-api-machineset: {{ .Values.machineset.prefix }}-{{ .Values.machineset.role }}-0
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: {{ $value.machineset.prefix }}
-        machine.openshift.io/cluster-api-machine-role: {{ $value.machineset.role }}
-        machine.openshift.io/cluster-api-machine-type: {{ $value.machineset.role }}
-        machine.openshift.io/cluster-api-machineset: {{ $value.machineset.prefix }}-{{ $value.machineset.role }}-0
+        machine.openshift.io/cluster-api-cluster: {{ .Values.machineset.prefix }}
+        machine.openshift.io/cluster-api-machine-role: {{ .Values.machineset.role }}
+        machine.openshift.io/cluster-api-machine-type: {{ .Values.machineset.role }}
+        machine.openshift.io/cluster-api-machineset: {{ .Values.machineset.prefix }}-{{ .Values.machineset.role }}-0
     spec:
       lifecycleHooks: {}
       metadata: {}
       providerSpec:
         value:
-          numCoresPerSocket: {{ $value.machineset.vsphere.numCoresPerSocket }}
-          diskGiB: {{ $value.machineset.vsphere.diskGiB }}
+          numCoresPerSocket: {{ .Values.machineset.vsphere.numCoresPerSocket }}
+          diskGiB: {{ .Values.machineset.vsphere.diskGiB }}
           snapshot: ''
           userDataSecret:
-            name: {{ $value.machineset.vsphere.userDataSecret }}
-          memoryMiB: {{ $value.machineset.vsphere.memoryMiB }}
+            name: {{ .Values.machineset.vsphere.userDataSecret }}
+          memoryMiB: {{ .Values.machineset.vsphere.memoryMiB }}
           credentialsSecret:
-            name: {{ $value.machineset.vsphere.credentialsSecret }}
+            name: {{ .Values.machineset.vsphere.credentialsSecret }}
           network:
             devices:
-              - networkName: {{ $value.machineset.vsphere.networkName }}
+              - networkName: {{ .Values.machineset.vsphere.networkName }}
           metadata:
             creationTimestamp: null
-          numCPUs: {{ $value.machineset.vsphere.numCPUs }}
+          numCPUs: {{ .Values.machineset.vsphere.numCPUs }}
           kind: VSphereMachineProviderSpec
           workspace:
-            datacenter: {{ $value.machineset.vsphere.datacenter }}
-            datastore: {{ $value.machineset.vsphere.datastore }}
-            folder: {{ $value.machineset.vsphere.folder }}
-            resourcePool: {{ $value.machineset.vsphere.resourcePool }}
-            server: {{ $value.machineset.vsphere.server }}
-          template: {{ $value.machineset.prefix }}-rhcos-generated-region-generated-zone
+            datacenter: {{ .Values.machineset.vsphere.datacenter }}
+            datastore: {{ .Values.machineset.vsphere.datastore }}
+            folder: {{ .Values.machineset.vsphere.folder }}
+            resourcePool: {{ .Values.machineset.vsphere.resourcePool }}
+            server: {{ .Values.machineset.vsphere.server }}
+          template: {{ .Values.machineset.prefix }}-rhcos-generated-region-generated-zone
           apiVersion: machine.openshift.io/v1beta1
-{{- end }}
-{{- end }}
