@@ -6,7 +6,7 @@ storagecluster:
 
   # -- Enable or disable StorageCluster
   # @default -- false
-  enabled: false
+  enabled: true
 
   # -- Syncwave for the StorageCluster object.
   # @default -- 3
