@@ -6,9 +6,6 @@ metadata:
   namespace: openshift-machine-api
   labels:
     machine.openshift.io/cluster-api-cluster: {{ .Values.machineset.prefix }}
-    {{- if eq ( .Values.machineset.storage_machineset | toString) "true" }}
-    cluster.ocs.openshift.io/openshift-storage: ''
-    {{- end }}
 spec:
   replicas: {{ .Values.machineset.replicas }}
   selector:
@@ -22,6 +19,9 @@ spec:
         machine.openshift.io/cluster-api-machine-role: {{ .Values.machineset.role }}
         machine.openshift.io/cluster-api-machine-type: {{ .Values.machineset.role }}
         machine.openshift.io/cluster-api-machineset: {{ .Values.machineset.prefix }}-{{ .Values.machineset.role }}-0
+        {{- if eq ( .Values.machineset.storage_machineset | toString) "true" }}
+        cluster.ocs.openshift.io/openshift-storage: ''
+        {{- end }}
     spec:
       lifecycleHooks: {}
       metadata: {}
