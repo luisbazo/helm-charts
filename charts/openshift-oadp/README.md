@@ -36,7 +36,7 @@ helper-operator:
         name: openshift-adp
         create: true
       subscription:
-        channel: stable-1.13
+        channel: stable-1.3
         approval: Automatic
         operatorName: redhat-oadp-operator
         source: redhat-operators
