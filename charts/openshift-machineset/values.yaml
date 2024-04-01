@@ -6,15 +6,15 @@ machineset:
   replicas: 3
   storage_machineset: true
   vsphere:
-    numCoresPerSocket: 4
+    numCoresPerSocket: 2
     diskGiB: 120
     userDataSecret: worker-user-data
     credentialsSecret: vsphere-cloud-credentials
     networkName: gym-6630026hom-yjcanuzn-segment
-    numCPUs: 4
+    numCPUs: 10
     datacenter: IBMCloud
     datastore: '/IBMCloud/datastore/gym-6630026hom-yjcanuzn-storage'
     folder: '/IBMCloud/vm/ocpgym-wdc/gym-6630026hom-yjcanuzn/IPI'
     resourcePool: '/IBMCloud/host/ocpgym-wdc/Resources/Cluster Resource Pool/Gym Member Resource Pool/gym-6630026hom-yjcanuzn'
     server: ocpgymwdc-vc.techzone.ibm.local
-    memoryMiB: 16384
+    memoryMiB: 26624
