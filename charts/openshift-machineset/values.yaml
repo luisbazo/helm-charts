@@ -4,6 +4,7 @@ machineset:
   role: infra
   enabled: true
   replicas: 3
+  storage_machineset: true
   vsphere:
     numCoresPerSocket: 4
     diskGiB: 120
