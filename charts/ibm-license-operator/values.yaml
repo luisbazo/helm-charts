@@ -1,0 +1,30 @@
+---
+helper-operator:
+  operators:
+    ibm-licensing-operator-app:
+      enabled: true
+      syncwave: '0'
+      namespace:
+        name: ibm-licensing
+        create: true
+      subscription:
+        channel: v4.2
+        approval: Automatic
+        operatorName: ibm-licensing-operator-app
+        source: ibm-licensing-catalog
+        sourceNamespace: openshift-marketplace
+      operatorgroup:
+        create: true
+
+helper-status-checker:
+  enabled: false
+
+  checks:
+
+    - operatorName: ibm-licensing-operator
+      namespace:
+        name: ibm-licensing
+      syncwave: 3
+
+      serviceAccount:
+        name: "status-checker-ibm-licensing"
