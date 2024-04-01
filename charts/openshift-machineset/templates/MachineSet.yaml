@@ -52,3 +52,5 @@ spec:
             server: {{ $value.machineset.vsphere.server }}
           template: {{ $value.machineset.prefix }}-rhcos-generated-region-generated-zone
           apiVersion: machine.openshift.io/v1beta1
+{{- end }}
+{{- end }}
