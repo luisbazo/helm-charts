@@ -1,4 +1,4 @@
-{{- range $key, $value := .Values.machineset }}
+{{- range $key, $value := .Values.config }}
 {{- if eq ($value.machineset.enabled | toString) "true" }}
 ---
 apiVersion: machine.openshift.io/v1beta1
