@@ -69,7 +69,7 @@ storagecluster:
             # -- Default AccessModes
             # @efault -- ReadWriteOnce
             accessModes:
-              - ReadWriteOnce
+              - "ReadWriteOnce"
 
             # -- Size of the Storage. Might be 512Gi, 2Ti, 4Ti
             # @default -- 512Gi
