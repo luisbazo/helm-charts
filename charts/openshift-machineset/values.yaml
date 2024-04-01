@@ -1,5 +1,5 @@
 ---
-machine-set:
+machineset:
   prefix: ocpinstall-rd8fr
   role: infra
   enabled: true
