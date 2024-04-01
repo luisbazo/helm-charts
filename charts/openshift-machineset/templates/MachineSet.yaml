@@ -19,12 +19,13 @@ spec:
         machine.openshift.io/cluster-api-machine-role: {{ .Values.machineset.role }}
         machine.openshift.io/cluster-api-machine-type: {{ .Values.machineset.role }}
         machine.openshift.io/cluster-api-machineset: {{ .Values.machineset.prefix }}-{{ .Values.machineset.role }}-0
-        {{- if eq ( .Values.machineset.storage_machineset | toString) "true" }}
-        cluster.ocs.openshift.io/openshift-storage: ''
-        {{- end }}
     spec:
       lifecycleHooks: {}
-      metadata: {}
+      metadata:
+        labels:
+          {{- if eq ( .Values.machineset.storage_machineset | toString) "true" }}
+          cluster.ocs.openshift.io/openshift-storage: ''
+          {{- end }}    
       providerSpec:
         value:
           numCoresPerSocket: {{ .Values.machineset.vsphere.numCoresPerSocket }}
