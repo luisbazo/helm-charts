@@ -3,7 +3,7 @@ machineset:
   prefix: ocpinstall-rd8fr
   role: infra
   enabled: true
-  replicas: 0
+  replicas: 3
   storage_machineset: true
   vsphere:
     numCoresPerSocket: 2
