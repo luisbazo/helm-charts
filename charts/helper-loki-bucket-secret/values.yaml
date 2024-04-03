@@ -1,17 +1,17 @@
 ---
 # -- Enable Job to create a Secret for LokiStack.
 # @default -- false
-enabled: false
+enabled: true
 
 # -- Syncwave for Argo CD.
 # @default -- 3
 syncwave: 3
 
 # -- Namespace where LokiStack is deployed and where the Secret shall be created.
-namespace: namespace-with-lokistack-and-bucket
+namespace: openshift-logging
 
 # -- Name of Secret that shall be created.
-secretname: secretname-to-create
+secretname: logging-loki-s3
 
 # Bucket Configuration
 bucket:
