@@ -47,13 +47,13 @@ storageclass_name: bucket-storage-class
 bucket:
   # -- Shall a new bucket be enabled?
   # @default -- false
-  enabled: false
+  enabled: true
 
   # -- Name of the bucket that shall be created
-  name: bucketname
+  name: logging-loki-s3
 
   # -- Target Namespace for that bucket.
-  namespace: target-namespace
+  namespace: openshift-logging
 
   # -- Syncwave for bucketclaim creation. This should be done very early, but it depends on ODF.
   # @default -- 2
@@ -61,4 +61,4 @@ bucket:
 
   # -- Name of the storageclass for our bucket
   # @default -- openshift-storage.noobaa.io
-  storageclass: bucket-storage-class
+  storageclass: openshift-storage.noobaa.io
