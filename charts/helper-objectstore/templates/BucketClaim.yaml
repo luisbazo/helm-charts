@@ -7,6 +7,9 @@ metadata:
   namespace: {{ .namespace }}
   labels:
     {{- include "common.labels" $ | nindent 4 }}
+  annotations:
+    argocd.argoproj.io/sync-wave: {{ .syncwave | default "2" | quote }}
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   generateBucketName: {{ .name }}
   storageClassName: {{ .storageclass | default "openshift-storage.noobaa.io" }}

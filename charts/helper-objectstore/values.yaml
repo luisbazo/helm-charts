@@ -57,7 +57,7 @@ bucket:
 
   # -- Syncwave for bucketclaim creation. This should be done very early, but it depends on ODF.
   # @default -- 2
-  syncwave: 2
+  syncwave: 0
 
   # -- Name of the storageclass for our bucket
   # @default -- openshift-storage.noobaa.io
