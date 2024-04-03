@@ -48,11 +48,11 @@ loggingConfig:
       #     memory: '1Gi'
       #     ephemeral-storage: '500Mi'
       # Define the tolerations the Pods will accept
-      tolerations:
-        - effect: NoSchedule
-          key: cluster.ocs.openshift.io/openshift-storage
-          operator: Equal
-          value: ''
+      # tolerations:
+      #  - effect: NoSchedule
+      #    key: cluster.ocs.openshift.io/openshift-storage
+      #    operator: Equal
+      #    value: ''
 
 # Install Operator Compliance Operator
 # Deploys Operator --> Subscription and Operatorgroup

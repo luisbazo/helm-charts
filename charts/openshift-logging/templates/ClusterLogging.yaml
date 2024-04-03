@@ -18,9 +18,6 @@ spec:
     type: "elasticsearch"
     elasticsearch:
       nodeCount: {{ .es.nodes }}
-      {{- if .es.nodeSelector }}
-      nodeSelector: {{ printf "%s:" .es.nodeSelector }}
-      {{- end }}
       storage:
         storageClassName: {{ .es.storageclass | quote }}
         size: {{ .es.storagesize }}
@@ -46,9 +43,6 @@ spec:
   visualization:
     type: "kibana"
     kibana:
-      {{- if .visualization.nodeSelector }}
-      nodeSelector: {{ printf "%s:" .visualization.nodeSelector }}
-      {{- end }}
       replicas: 1
   collection:
     logs:
@@ -87,9 +81,6 @@ spec:
     {{- end }}
   collection:
     type: {{ .collection.type | default "vector" }}
-    {{- if .collection.nodeSelector }}
-    nodeSelector: {{ printf "%s:" .collection.nodeSelector }}
-    {{- end }}
     {{- /* Set tolerations for the COLLECTOR */}}
     {{- if .collection.tolerations }}
     tolerations:
@@ -136,9 +127,6 @@ spec:
     {{- end }}
   visualization:
     type: {{ .visualization.type | default "ocp-console" }}
-    {{- if .visualization.nodeSelector }}
-    nodeSelector: {{ printf "%s:" .visualization.nodeSelector }}
-    {{- end }}
   {{- end }}
   {{- end }}
 {{- end }}
