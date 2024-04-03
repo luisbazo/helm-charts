@@ -1,6 +1,6 @@
 ---
 machineset:
-  prefix: ocpinstall-rd8fr
+  prefix: ocpinstall-xnlp2
   role: infra
   enabled: true
   replicas: 3
