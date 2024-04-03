@@ -76,7 +76,7 @@ helper-operator:
         sourceNamespace: openshift-marketplace
       operatorgroup:
         # notownnamespace: true
-        create: false
+        create: true
 
     cluster-logging-operator:
       enabled: true
