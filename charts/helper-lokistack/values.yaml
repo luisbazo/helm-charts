@@ -32,7 +32,7 @@ storage:
   secret:
 
     # -- Name of a secret in the namespace configured for object storage secrets.
-    name: logging-loki-s3
+    name: logging-loki-s3-secret
 
     # Type of object storage that should be used
     # Can bei either:
