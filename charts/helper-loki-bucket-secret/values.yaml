@@ -11,9 +11,9 @@ syncwave: '0'
 namespace: openshift-logging
 
 # -- Name of Secret that shall be created.
-secretname: logging-loki-s3
+secretname: logging-loki-s3-secret
 
 # Bucket Configuration
 bucket:
   # -- Name of the Bucket shall has been created.
-  name: logging-loki-s3-e4f010a0-aaad-4e90-8e47-1e4046076946
+  name: logging-loki-s3
