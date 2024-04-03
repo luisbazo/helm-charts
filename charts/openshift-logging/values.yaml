@@ -1,6 +1,6 @@
 ---
 loggingConfig:
-  enabled: false
+  enabled: true
   syncwave: '4'
   # Indicator if the resource is 'Managed' or 'Unmanaged' by the operator
   # managementState: Managed
@@ -63,7 +63,7 @@ helper-operator:
         create: true
 
     loki-operator:
-      enabled: false
+      enabled: true
       syncwave: '0'
       namespace:
         name: openshift-operators-redhat
@@ -79,7 +79,7 @@ helper-operator:
         create: false
 
     cluster-logging-operator:
-      enabled: false
+      enabled: true
       syncwave: '0'
       namespace:
         name: openshift-logging
