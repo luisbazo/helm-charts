@@ -10,6 +10,18 @@ loggingConfig:
     type: lokistack
     # Name of the LokiStack resource.
     lokistack: logging-loki
+
+    #Parameters to Elastic Search config
+    es:
+      storagesize: 200G
+      storageclass: ocs-storagecluster-ceph-rbd
+      nodes: 3
+      limits:
+        mem: 8Gi
+      requests:
+        mem: 4Gi
+      redundancyPolicy: SingleRedundancy
+
     retentionPolicy:
       application:
         maxAge: 1d
