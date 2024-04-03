@@ -173,7 +173,7 @@ helper-objectstore:
 
     # -- Syncwave for bucketclaim creation. This should be done very early, but it depends on ODF.
     # @default -- 2
-    syncwave: 2
+    syncwave: '0'
 
     # -- Name of the storageclass for our bucket
     # @default -- openshift-storage.noobaa.io
@@ -185,7 +185,7 @@ helper-loki-bucket-secret:
 
   # -- Syncwave for Argo CD.
   # @default -- 3
-  syncwave: '0'
+  syncwave: '1'
 
   # -- Namespace where LokiStack is deployed and where the Secret shall be created.
   namespace: openshift-logging
@@ -212,7 +212,7 @@ helper-lokistack:
 
   # -- Syncwave for the LokiStack object.
   # @default -- 3
-  syncwave: 3
+  syncwave: '3'
 
   # -- This is for log streams only, not the retention of the object store. Data retention must be configured on the bucket.
   global_retention_days: 4
