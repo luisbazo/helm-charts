@@ -5,7 +5,7 @@ enabled: true
 
 # -- Syncwave for Argo CD.
 # @default -- 3
-syncwave: "0"
+syncwave: '0'
 
 # -- Namespace where LokiStack is deployed and where the Secret shall be created.
 namespace: openshift-logging
