@@ -16,4 +16,4 @@ secretname: logging-loki-s3
 # Bucket Configuration
 bucket:
   # -- Name of the Bucket shall has been created.
-  name: bucket-name
+  name: logging-loki-s3-e4f010a0-aaad-4e90-8e47-1e4046076946
