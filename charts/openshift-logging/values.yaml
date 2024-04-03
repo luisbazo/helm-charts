@@ -69,7 +69,7 @@ helper-operator:
         name: openshift-operators-redhat
         create: true
       subscription:
-        channel: stable
+        channel: stable-5.8
         approval: Automatic
         operatorName: loki-operator
         source: redhat-operators
