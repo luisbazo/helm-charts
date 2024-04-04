@@ -35,11 +35,11 @@ spec:
       redundancyPolicy: {{ .es.redundancyPolicy | quote }}
       retentionPolicy:
         application:
-          maxAge: {{ .retentionPolicy.application.maxAge | default "1d" }}
+          maxAge: {{ .es.retentionPolicy.application.maxAge | default "1d" }}
         infra:
-          maxAge: {{ .retentionPolicy.infra.maxAge | default "1d" }}
+          maxAge: {{ .es.retentionPolicy.infra.maxAge | default "1d" }}
         audit:
-          maxAge: {{ .retentionPolicy.audit.maxAge | default "1d" }}
+          maxAge: {{ .es.retentionPolicy.audit.maxAge | default "1d" }}
   visualization:
     type: "kibana"
     kibana:
@@ -50,7 +50,7 @@ spec:
       fluentd: {}
   {{- end }}
   {{- if eq .logStore.type "lokistack" }}
-  {{- with .logStore }}
+  {{- with .loki }}
   logStore:
     type: {{ .type }}
     lokistack:
