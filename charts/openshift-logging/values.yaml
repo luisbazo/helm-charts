@@ -1,4 +1,5 @@
 ---
+elasticsearch: true
 loggingConfig:
   enabled: true
   syncwave: '4'
