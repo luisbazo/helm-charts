@@ -111,8 +111,8 @@ helper-operator:
         operatorName: cluster-logging
         source: redhat-operators
         sourceNamespace: openshift-marketplace
-      #operatorgroup:
-        #create: true
+      operatorgroup:
+        create: false
 
 helper-status-checker:
   enabled: false
@@ -203,7 +203,7 @@ helper-objectstore:
 
 helper-loki-bucket-secret:
 
-  enabled: true
+  enabled: false
 
   # -- Syncwave for Argo CD.
   # @default -- 3
