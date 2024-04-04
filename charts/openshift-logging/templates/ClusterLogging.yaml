@@ -13,7 +13,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   managementState: {{ .managementState | default "Managed" | quote }}
-  {{- if eq ( $.Values.elasticsearch | toString) "elasticsearch" }}
+  {{- if eq ( $.Values.type | toString) "elasticsearch" }}
   {{- with .es }}
   logStore:
     type: "elasticsearch"
@@ -52,7 +52,7 @@ spec:
   {{- end }}
   {{- end }}
 
-  {{- if eq ( $.Values.elasticsearch | toString) "loki" }}
+  {{- if eq ( $.Values.type | toString) "loki" }}
   {{- with .loki }}
   logStore:
     type: {{ .type }}
