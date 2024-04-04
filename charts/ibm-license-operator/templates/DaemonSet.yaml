@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    myapp: beyond-kvc
+  name: cp4a-daemonset-license-service
+  namespace: ibm-licensing
+spec:
+  selector:
+    matchLabels:
+      name: beyond-kvc
+  template:
+    metadata:
+      annotations:
+        cloudpakId: 4df52d2cdc374ba09f631a650ad2b5bf
+        cloudpakName: IBM Cloud Pak for Applications
+        productChargedContainers: All
+        productCloudpakRatio: "1:1"
+        productID: d6f3e81e36f948e8897df8bc97095196
+        productMetric: VIRTUAL_PROCESSOR_CORE
+        productName: IBM Cloud Pak for Applications - RedHat OpenShift Worker Nodes
+      creationTimestamp: null
+      labels:
+        name: beyond-kvc
+    spec:
+      containers:
+      - command:
+        - /bin/bash
+        - -c
+        - while true; do echo CP4Apps; sleep 1h; done
+        image: registry.redhat.io/ubi8/ubi@sha256:bce7e9f69fb7d4533447232478fd825811c760288f87a35699f9c8f030f2c1a6
+        imagePullPolicy: Always
+        name: beyond-kvc
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
