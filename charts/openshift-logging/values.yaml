@@ -111,8 +111,8 @@ helper-operator:
         operatorName: cluster-logging
         source: redhat-operators
         sourceNamespace: openshift-marketplace
-      operatorgroup:
-        create: true
+      #operatorgroup:
+        #create: true
 
 helper-status-checker:
   enabled: false
@@ -224,7 +224,7 @@ helper-loki-bucket-secret:
 helper-lokistack:
   # -- Enable or disable LokiStack configuration
   # @default -- false
-  enabled: false
+  enabled: f
 
   # -- Name of the LokiStack object
   name: logging-loki
