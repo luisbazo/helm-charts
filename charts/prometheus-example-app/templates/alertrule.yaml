@@ -5,7 +5,12 @@ metadata:
   namespace: {{.Values.namespace}}
 spec:
   groups:
-  - name: example
-    rules:
-    - alert: VersionAlert
-      expr: version{job="prometheus-example-app"} == 1
+    - name: example
+      rules:
+        - alert: VersionAlert
+          annotations:
+            description: we've got a problem here
+            summary: Problem here
+          expr: 'version{job="prometheus-example-app"} == 1'
+          labels:
+            severity: critical
