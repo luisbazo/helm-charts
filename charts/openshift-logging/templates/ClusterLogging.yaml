@@ -34,13 +34,13 @@ spec:
           requests:
             memory: 256Mi
       redundancyPolicy: {{ .redundancyPolicy | quote }}
-      retentionPolicy:
-        application:
-          maxAge: {{ .retentionPolicy.application.maxAge | default "1d" }}
-        infra:
-          maxAge: {{ .retentionPolicy.infra.maxAge | default "1d" }}
-        audit:
-          maxAge: {{ .retentionPolicy.audit.maxAge | default "1d" }}
+    retentionPolicy:
+      application:
+        maxAge: {{ .retentionPolicy.application.maxAge | default "1d" }}
+      infra:
+        maxAge: {{ .retentionPolicy.infra.maxAge | default "1d" }}
+      audit:
+        maxAge: {{ .retentionPolicy.audit.maxAge | default "1d" }}
   visualization:
     type: "kibana"
     kibana:
