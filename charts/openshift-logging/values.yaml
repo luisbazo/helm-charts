@@ -2,27 +2,26 @@
 elasticsearch: true
 loggingConfig:
   enabled: true
+  #Parameters to Elastic Search config
+  es:
+    storagesize: 200G
+    storageclass: ocs-storagecluster-ceph-rbd
+    nodes: 3
+    limits:
+      mem: 8Gi
+    requests:
+      mem: 4Gi
+    redundancyPolicy: SingleRedundancy
   syncwave: '4'
   # Indicator if the resource is 'Managed' or 'Unmanaged' by the operator
   # managementState: Managed
   # Specification of the Log Storage component for the cluster
   logStore:
     # The Type of Log Storage to configure. The operator currently supports either using ElasticSearch managed by elasticsearch-operator or Loki managed by loki-operator (LokiStack) as a default log store.
-    #type: lokistack
-    type: elasticsearch
+    type: lokistack
+    # type: elasticsearch
     # Name of the LokiStack resource.
     lokistack: logging-loki
-
-    #Parameters to Elastic Search config
-    es:
-      storagesize: 200G
-      storageclass: ocs-storagecluster-ceph-rbd
-      nodes: 3
-      limits:
-        mem: 8Gi
-      requests:
-        mem: 4Gi
-      redundancyPolicy: SingleRedundancy
 
     retentionPolicy:
       application:
