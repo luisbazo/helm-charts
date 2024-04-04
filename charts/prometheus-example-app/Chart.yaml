@@ -1,6 +1,6 @@
 apiVersion: v2
 name: prometheus-example-app
-description: This is a prometheus example application to expose metrics
+description: This is a prometheus example application to expose metrics. It's created a prometheus alert to trigger an alarm and it is also created a platform alert on workers above 70% CPU consumption as an example
 version: 1.0.23
 home: https://github.com/luisbazo/helm-charts/tree/main/charts/prometheus-example-app
 maintainers:
