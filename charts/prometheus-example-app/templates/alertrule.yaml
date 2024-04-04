@@ -8,4 +8,4 @@ spec:
   - name: example
     rules:
     - alert: VersionAlert
-      expr: version{job="prometheus-example-app"} == 0
+      expr: version{job="prometheus-example-app"} == 1
