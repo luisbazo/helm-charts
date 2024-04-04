@@ -7,7 +7,8 @@ loggingConfig:
   # Specification of the Log Storage component for the cluster
   logStore:
     # The Type of Log Storage to configure. The operator currently supports either using ElasticSearch managed by elasticsearch-operator or Loki managed by loki-operator (LokiStack) as a default log store.
-    type: lokistack
+    #type: lokistack
+    type: elasticsearch
     # Name of the LokiStack resource.
     lokistack: logging-loki
 
