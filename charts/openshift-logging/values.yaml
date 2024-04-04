@@ -1,6 +1,6 @@
 ---
 # Type can value elasticsearch or loki
-type: elasticsearch
+type: loki
 loggingConfig:
   enabled: true
   #Parameters to Elastic Search config
@@ -85,7 +85,7 @@ helper-operator:
         create: true
 
     loki-operator:
-      enabled: false
+      enabled: true
       syncwave: '0'
       namespace:
         name: openshift-operators-redhat
@@ -185,7 +185,7 @@ helper-objectstore:
   bucket:
     # -- Shall a new bucket be enabled?
     # @default -- false
-    enabled: false
+    enabled: true
 
     # -- Name of the bucket that shall be created
     name: logging-loki-s3
@@ -203,7 +203,7 @@ helper-objectstore:
 
 helper-loki-bucket-secret:
 
-  enabled: false
+  enabled: true
 
   # -- Syncwave for Argo CD.
   # @default -- 3
@@ -224,7 +224,7 @@ helper-loki-bucket-secret:
 helper-lokistack:
   # -- Enable or disable LokiStack configuration
   # @default -- false
-  enabled: false
+  enabled: true
 
   # -- Name of the LokiStack object
   name: logging-loki
