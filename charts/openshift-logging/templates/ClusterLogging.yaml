@@ -13,33 +13,34 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   managementState: {{ .managementState | default "Managed" | quote }}
-  {{- if eq ( $.Values.elasticsearch | toString) "true" }}
+  {{- if eq ( $.Values.elasticsearch | toString) "elasticsearch" }}
+  {{- with .es }}
   logStore:
     type: "elasticsearch"
     elasticsearch:
-      nodeCount: {{ .es.nodes }}
+      nodeCount: {{ .nodes }}
       storage:
-        storageClassName: {{ .es.storageclass | quote }}
-        size: {{ .es.storagesize }}
+        storageClassName: {{ .storageclass | quote }}
+        size: {{ .storagesize }}
       resources:
           limits:
-            memory: {{ .es.limits.mem | quote }}
+            memory: {{ .limits.mem | quote }}
           requests:
-            memory: {{ .es.requests.mem | quote }}
+            memory: {{ .requests.mem | quote }}
       proxy:
         resources:
           limits:
             memory: 256Mi
           requests:
             memory: 256Mi
-      redundancyPolicy: {{ .es.redundancyPolicy | quote }}
+      redundancyPolicy: {{ .redundancyPolicy | quote }}
       retentionPolicy:
         application:
-          maxAge: {{ .es.retentionPolicy.application.maxAge | default "1d" }}
+          maxAge: {{ .retentionPolicy.application.maxAge | default "1d" }}
         infra:
-          maxAge: {{ .es.retentionPolicy.infra.maxAge | default "1d" }}
+          maxAge: {{ .retentionPolicy.infra.maxAge | default "1d" }}
         audit:
-          maxAge: {{ .es.retentionPolicy.audit.maxAge | default "1d" }}
+          maxAge: {{ .retentionPolicy.audit.maxAge | default "1d" }}
   visualization:
     type: "kibana"
     kibana:
@@ -49,7 +50,9 @@ spec:
       type: "fluentd"
       fluentd: {}
   {{- end }}
-  {{- if eq .logStore.type "lokistack" }}
+  {{- end }}
+
+  {{- if eq ( $.Values.elasticsearch | toString) "loki" }}
   {{- with .loki }}
   logStore:
     type: {{ .type }}
