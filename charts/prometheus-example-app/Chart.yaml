@@ -1,0 +1,15 @@
+apiVersion: v2
+name: prometheus-example-app
+description: This is a prometheus example application to expose metrics
+version: 1.0.23
+home: https://github.com/luisbazo/helm-charts/tree/main/charts/prometheus-example-app
+maintainers:
+  - name: luisbazo
+    email: luis.bazo@gmail.com
+    url: https://blog.stderr.at/
+sources:
+  - https://github.com/tjungbauer/helm-charts
+  - https://charts.stderr.at/
+  - https://github.com/tjungbauer/openshift-clusterconfig-gitops
+keywords:
+  - promotheus-example-app
