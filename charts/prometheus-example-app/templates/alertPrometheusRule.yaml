@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: example-alert
+  namespace: {{.Values.namespace}}
+spec:
+  groups:
+    - name: example
+      rules:
+        - alert: VersionAlert
+          annotations:
+            description: we've got a problem here
+            summary: Problem here
+          expr: 'version{job="prometheus-example-app"} == 1'
+          labels:
+            severity: critical

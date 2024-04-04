@@ -1,16 +1,17 @@
-apiVersion: monitoring.coreos.com/v1
-kind: PrometheusRule
+apiVersion: monitoring.openshift.io/v1
+kind: AlertingRule
 metadata:
-  name: example-alert
-  namespace: {{.Values.namespace}}
+  name: alert-server-over-70
+  namespace: openshift-monitoring
 spec:
   groups:
     - name: example
       rules:
-        - alert: VersionAlert
+        - alert: NodeLoadedAlert70
           annotations:
-            description: we've got a problem here
+            description: We've got nodes over 70% CPU consumption
             summary: Problem here
-          expr: 'version{job="prometheus-example-app"} == 1'
+          expr: >-
+            sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{cluster=""}) by (node) / sum(kube_node_status_capacity{cluster="", resource="cpu"}) by (node) >= 0.7
           labels:
             severity: critical
