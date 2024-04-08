@@ -50,7 +50,7 @@ spec:
   transadv:
     livenessProbe:
       failureThreshold: 15
-      initialDelaySeconds: 120
+      initialDelaySeconds: '120'
       periodSeconds: 5
       timeoutSeconds: 30
     logLevel: info
