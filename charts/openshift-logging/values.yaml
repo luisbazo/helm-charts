@@ -4,7 +4,7 @@ type: elasticsearch
 
 logforwarderConfig:
   enabled: true
-  syncwave: '5'
+  syncwave: 5
 
 loggingConfig:
   enabled: true
