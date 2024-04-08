@@ -71,7 +71,7 @@ helper-operator:
   operators:
     elasticsearch-operator:
       enabled: true
-      syncwave: '1'
+      syncwave: '0'
       namespace:
         name: openshift-operators-redhat
         create: true
@@ -102,7 +102,7 @@ helper-operator:
 
     cluster-logging-operator:
       enabled: true
-      syncwave: '1'
+      syncwave: '0'
       namespace:
         name: openshift-logging
         create: true
