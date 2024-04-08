@@ -11,7 +11,7 @@ helper-operator:
         channel: fast
         approval: Automatic
         operatorName: web-terminal
-        source: openshift-marketplace
+        source: redhat-operators
         sourceNamespace: openshift-marketplace
       operatorgroup:
         create: true
