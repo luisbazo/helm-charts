@@ -10,7 +10,7 @@ metadata:
     argocd.argoproj.io/sync-wave: {{ .syncwave | quote }}
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: ta
-  namespace: ta-project
+  namespace: {{.namespace.name}}
   labels:
     app.kubernetes.io/instance: ibm-transformation-advisor-instance
     app.kubernetes.io/managed-by: ibm-transformation-advisor-manager
