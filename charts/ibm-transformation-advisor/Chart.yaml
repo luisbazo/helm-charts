@@ -1,5 +1,5 @@
 apiVersion: v2
-name: openshift-oadp
+name: ibm-transformation-advisor
 description: Deploy and configure OpenShift IBM License Operator
 version: 1.0.28
 home: https://github.com/luisbazo/helm-charts/tree/main/charts/ibm-transformation-advisor
