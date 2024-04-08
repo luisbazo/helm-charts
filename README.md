@@ -15,8 +15,9 @@ https://www.redhat.com/en/blog/operator-installation-with-argo-cd/gitops
 
 oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
 
-############################ARGO APPLICATION INFRA MACHINESET####################################
+##ARGO APPLICATION INFRA MACHINESET
 
+```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -38,9 +39,10 @@ spec:
     path: charts/openshift-machineset
     repoURL: 'https://github.com/luisbazo/helm-charts'
     targetRevision: main
+```
 
 
-########################OFD installation########################
+##OFD installation
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -69,7 +71,7 @@ spec:
 
 oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n openshift-storage
 
-#############################ARGO APPLICATION OADP OPERATOR##########################
+##ARGO APPLICATION OADP OPERATOR
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -98,7 +100,7 @@ spec:
 
 
 
-##############################ARGO APPLICATION IBM LICENSE SERVER####################
+##ARGO APPLICATION IBM LICENSE SERVER
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -125,9 +127,7 @@ spec:
     repoURL: 'https://github.com/luisbazo/helm-charts'
     targetRevision: main
 
-####################################################################
-
-##########################OPENSHIFT LOGGING#####################
+##OPENSHIFT LOGGING
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -156,7 +156,7 @@ spec:
 
 oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n openshift-logging
 
-##########################PROMETHEUS ALERTING#####################
+##PROMETHEUS ALERTING
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -183,11 +183,12 @@ spec:
     repoURL: 'https://github.com/luisbazo/helm-charts'
     targetRevision: main
 
-oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n test
+
+To develop new custom grafana dashboards visit,
 
 https://kamsjec.medium.com/custom-grafana-dashboards-for-red-hat-openshift-container-platform-4-x-9495678b714c
 
-#########################################PROMETHEUS EXAMPLE QUERIES############################
+##PROMETHEUS EXAMPLE QUERIES
 
 
 (sum(kube_node_status_allocatable{cluster="", node=~"ocpinstall-l7rz9-master-0", resource="cpu"}) / sum(kube_node_status_capacity{cluster="", node=~"ocpinstall-l7rz9-master-0", resource="cpu"}))*100
