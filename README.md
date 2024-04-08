@@ -9,13 +9,16 @@ It is mainly used by [Cluster Bootstrap](https://github.com/tjungbauer/openshift
 
 ## Examples for usage of some of the charts developed in GITOPS
 
-GITOPS - OPERATOR deployment ODF
+Requirements:
+
+-Openshift Container Platform
+-GITOPS Operator installed in the cluster
 
 Inspiration and charts examples I have forked and customized
 
 https://www.redhat.com/en/blog/operator-installation-with-argo-cd/gitops
 
-This command in needed to provide ARGO CD with admin priviledges in the cluster. It can be changed by on a per namespace basis adding just admin priviledges to the namespace required
+This command is needed to provide ARGO CD with admin priviledges in the cluster. It can be changed by on a per namespace basis adding just admin priviledges to the namespace required
 
 oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
 
