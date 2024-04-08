@@ -1,3 +1,6 @@
+{{- with .Values.loggingConfig }}
+{{ if eq ( .enabled | toString) "true" }}
+---
 apiVersion: logging.openshift.io/v1
 kind: ClusterLogForwarder
 metadata:

@@ -46,7 +46,7 @@ spec:
 ```
 
 
-## OFD installation
+## ODF installation
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
