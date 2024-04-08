@@ -4,47 +4,195 @@
 [![Lint and Test Charts](https://github.com/tjungbauer/helm-charts/actions/workflows/lint_and_test_charts.yml/badge.svg)](https://github.com/tjungbauer/helm-charts/actions/workflows/lint_and_test_charts.yml)
 [![Release Charts](https://github.com/tjungbauer/helm-charts/actions/workflows/release.yml/badge.svg)](https://github.com/tjungbauer/helm-charts/actions/workflows/release.yml)
 
-This Helm Chart repository contains Charts, which I use to deploy my Demos on OpenShift/Kubernetes. 
+This Helm Chart repository contains Charts, which I use to deploy my Demos on OpenShift/Kubernetes.
 It is mainly used by [Cluster Bootstrap](https://github.com/tjungbauer/openshift-clusterconfig-gitops) but it can be used individually as well.
 
-Charts in this repo contains for example are:
+## Examples for usage of some of the charts developed
 
-* Red Hat Advanced Cluster Security Deployment and Initialization
-* Pipeline Demo
-* Compliance Operator Deployment and Configuration
+GITOPS - OPERATOR deployment ODF
 
-## Add Helm Repository locally
-```
-helm repo add tjungbauer https://charts.stderr.at/
-```
+https://www.redhat.com/en/blog/operator-installation-with-argo-cd/gitops
 
-## Update your repository
-```
-helm repo update
-```
+oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
 
-## To list what is in the repository
-```
-helm search repo tjungbauer
-```
+############################ARGO APPLICATION INFRA MACHINESET####################################
 
-## Run a chart
-To install an individual Chart: 
-```
-helm install $NAME tjungbauer/$CHART_NAME
-```
-Where:
-* $NAME - is the name you want to give the installed Helm App
-* $CHART_NAME - name of the chart found in `charts` directory
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: in-cluster-install-machineset-infra
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  info:
+    - name: Description
+      value: Machine set to infra nodes
+  project: default
+  source:
+    path: charts/openshift-machineset
+    repoURL: 'https://github.com/luisbazo/helm-charts'
+    targetRevision: main
 
-## Linting
-All Charts in this repository must pass the linting process. Use [`helm lint`](https://helm.sh/docs/helm/helm_lint/) and [`chart testing`](https://github.com/helm/chart-testing/blob/master/doc/ct_lint.md) tools.
 
-## CI/CD of this Repo 
-This Repo is using two Github Actions to validate the Charts and to create the Helm repository:
+########################OFD installation########################
 
-* Lint and Test Charts: Uses Chart Tester to automatically verify all NEW (updated) Charts. This means that the version of a Chart must be incremented in order to be found by this action.
-* Release Charts: Uses Chart Releaser to build the helm repository on Github Pages. This page is automatically created in the branch "gh-pages" and can be found at: https://charts.stderr.at/
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: in-cluster-install-openshift-data-foundation
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  info:
+    - name: Description
+      value: Deploy Openshift Data foundation
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    path: charts/openshift-data-foundation
+    repoURL: 'https://github.com/luisbazo/helm-charts'
+    targetRevision: main
 
-## Thanks
-For all the inspiration: https://github.com/redhat-cop/helm-charts 
+oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n openshift-storage
+
+#############################ARGO APPLICATION OADP OPERATOR##########################
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: in-cluster-install-oadp-operator
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  info:
+    - name: Description
+      value: Deploy OADP Operator
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    path: charts/openshift-oadp
+    repoURL: 'https://github.com/luisbazo/helm-charts'
+    targetRevision: main
+
+
+
+##############################ARGO APPLICATION IBM LICENSE SERVER####################
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: in-cluster-install-license-server
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  info:
+    - name: Description
+      value: Deploy IBM License Server
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    path: charts/ibm-license-operator
+    repoURL: 'https://github.com/luisbazo/helm-charts'
+    targetRevision: main
+
+####################################################################
+
+##########################OPENSHIFT LOGGING#####################
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: in-cluster-install-openshift-logging
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  info:
+    - name: Description
+      value: Deploy Openshift Logging
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    path: charts/openshift-logging
+    repoURL: 'https://github.com/luisbazo/helm-charts'
+    targetRevision: main
+
+oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n openshift-logging
+
+##########################PROMETHEUS ALERTING#####################
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: in-cluster-install-prometheus-sample-app
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  info:
+    - name: Description
+      value: Deploy Openshift Logging
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    path: charts/prometheus-example-app
+    repoURL: 'https://github.com/luisbazo/helm-charts'
+    targetRevision: main
+
+oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n test
+
+https://kamsjec.medium.com/custom-grafana-dashboards-for-red-hat-openshift-container-platform-4-x-9495678b714c
+
+#########################################PROMETHEUS EXAMPLE QUERIES############################
+
+
+(sum(kube_node_status_allocatable{cluster="", node=~"ocpinstall-l7rz9-master-0", resource="cpu"}) / sum(kube_node_status_capacity{cluster="", node=~"ocpinstall-l7rz9-master-0", resource="cpu"}))*100
+
+
+sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{cluster=""}) by (node) / sum(kube_node_status_capacity{cluster="", resource="cpu"}) by (node)
+
+sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{cluster=""}) by (node) / sum(kube_node_status_allocatable{cluster="", resource="cpu"}) by (node)
