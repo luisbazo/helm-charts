@@ -11,8 +11,8 @@ It is mainly used by [Cluster Bootstrap](https://github.com/tjungbauer/openshift
 
 Requirements:
 
-Openshift Container Platform
-GITOPS Operator installed in the cluster
+- Openshift Container Platform
+- GITOPS Operator installed in the cluster
 
 Inspiration and charts examples I have forked and customized
 
@@ -24,7 +24,7 @@ This command is needed to provide ARGO CD with admin priviledges in the cluster.
 oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
 ```
 
-##ARGO APPLICATION INFRA MACHINESET
+## ARGO APPLICATION INFRA MACHINESET
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -51,7 +51,7 @@ spec:
 ```
 
 
-##OFD installation
+## OFD installation
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -80,7 +80,7 @@ spec:
     targetRevision: main
 ```
 
-##ARGO APPLICATION OADP OPERATOR
+## ARGO APPLICATION OADP OPERATOR
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -110,7 +110,7 @@ spec:
 ```
 
 
-##ARGO APPLICATION IBM LICENSE SERVER
+## ARGO APPLICATION IBM LICENSE SERVER
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -139,7 +139,7 @@ spec:
     targetRevision: main
 ```
 
-##OPENSHIFT LOGGING
+## OPENSHIFT LOGGING
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -168,7 +168,7 @@ spec:
     targetRevision: main
 ```
 
-##PROMETHEUS ALERTING
+## PROMETHEUS ALERTING
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -201,7 +201,7 @@ If interested in developing new custom grafana dashboards please visit,
 
 https://kamsjec.medium.com/custom-grafana-dashboards-for-red-hat-openshift-container-platform-4-x-9495678b714c
 
-##Some PROMETHEUS EXAMPLE QUERIES to visualize the available to RESERVE node CPU.
+## Some PROMETHEUS EXAMPLE QUERIES to visualize the available to RESERVE node CPU.
 
 This is important since new pods won't get scheduled in the nodes if no avaiblabe to reserve CPU is found in the cluster
 
