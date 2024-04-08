@@ -1,11 +1,6 @@
 # My Helm Chart Collection
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Lint and Test Charts](https://github.com/tjungbauer/helm-charts/actions/workflows/lint_and_test_charts.yml/badge.svg)](https://github.com/tjungbauer/helm-charts/actions/workflows/lint_and_test_charts.yml)
-[![Release Charts](https://github.com/tjungbauer/helm-charts/actions/workflows/release.yml/badge.svg)](https://github.com/tjungbauer/helm-charts/actions/workflows/release.yml)
-
-This Helm Chart repository contains Charts, which I use to deploy my Demos on OpenShift/Kubernetes.
-It is mainly used by [Cluster Bootstrap](https://github.com/tjungbauer/openshift-clusterconfig-gitops) but it can be used individually as well.
 
 ## Examples for usage of some of the charts developed in GITOPS
 
