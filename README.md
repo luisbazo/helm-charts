@@ -134,6 +134,64 @@ spec:
     targetRevision: main
 ```
 
+## IBM TRANSFORMATION ADVISOR
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: in-cluster-install-ibm-transformation-advisor
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  info:
+    - name: Description
+      value: Deploy IBM Transformation Advisor
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    path: charts/ibm-transformation-advisor
+    repoURL: 'https://github.com/luisbazo/helm-charts'
+    targetRevision: main
+```
+
+## Openshift Web Terminal
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: in-cluster-install-openshift-web-terminal
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  info:
+    - name: Description
+      value: Deploy Openshift Web Terminal
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    path: charts/openshift-web-terminal
+    repoURL: 'https://github.com/luisbazo/helm-charts'
+    targetRevision: main
+```
+
 ## OPENSHIFT LOGGING
 
 ```yaml
