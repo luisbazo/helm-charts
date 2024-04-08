@@ -7,7 +7,7 @@
 This Helm Chart repository contains Charts, which I use to deploy my Demos on OpenShift/Kubernetes.
 It is mainly used by [Cluster Bootstrap](https://github.com/tjungbauer/openshift-clusterconfig-gitops) but it can be used individually as well.
 
-## Examples for usage of some of the charts developed
+## Examples for usage of some of the charts developed in GITOPS
 
 GITOPS - OPERATOR deployment ODF
 
