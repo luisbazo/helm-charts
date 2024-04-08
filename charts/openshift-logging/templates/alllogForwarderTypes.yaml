@@ -1,4 +1,4 @@
-{{- with .Values.loggingConfig }}
+{{- with .Values.logforwarderConfig }}
 {{ if eq ( .enabled | toString) "true" }}
 ---
 apiVersion: logging.openshift.io/v1

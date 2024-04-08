@@ -1,6 +1,11 @@
 ---
 # Type can value elasticsearch or loki
 type: elasticsearch
+
+logforwarderConfig:
+  enabled: true
+  syncwave: '5'
+
 loggingConfig:
   enabled: true
   #Parameters to Elastic Search config
