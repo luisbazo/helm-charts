@@ -1,7 +1,7 @@
 ---
 helper-operator:
   operators:
-    redhat-web-terminal:
+    web-terminal:
       enabled: true
       syncwave: '0'
       namespace:

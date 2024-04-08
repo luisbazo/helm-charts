@@ -169,7 +169,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: in-cluster-install-openshift-web-terminal
+  name: in-cluster-install-web-terminal
   namespace: openshift-gitops
 spec:
   destination:
@@ -187,7 +187,7 @@ spec:
     helm:
       valueFiles:
         - values.yaml
-    path: charts/openshift-web-terminal
+    path: charts/web-terminal
     repoURL: 'https://github.com/luisbazo/helm-charts'
     targetRevision: main
 ```
