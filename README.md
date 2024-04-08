@@ -11,7 +11,11 @@ It is mainly used by [Cluster Bootstrap](https://github.com/tjungbauer/openshift
 
 GITOPS - OPERATOR deployment ODF
 
+Inspiration and charts examples I have forked and customized
+
 https://www.redhat.com/en/blog/operator-installation-with-argo-cd/gitops
+
+This command in needed to provide ARGO CD with admin priviledges in the cluster. It can be changed by on a per namespace basis adding just admin priviledges to the namespace required
 
 oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
 
@@ -44,6 +48,7 @@ spec:
 
 ##OFD installation
 
+```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -68,11 +73,11 @@ spec:
     path: charts/openshift-data-foundation
     repoURL: 'https://github.com/luisbazo/helm-charts'
     targetRevision: main
-
-oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n openshift-storage
+```
 
 ##ARGO APPLICATION OADP OPERATOR
 
+```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -97,11 +102,12 @@ spec:
     path: charts/openshift-oadp
     repoURL: 'https://github.com/luisbazo/helm-charts'
     targetRevision: main
-
+```
 
 
 ##ARGO APPLICATION IBM LICENSE SERVER
 
+```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -126,9 +132,11 @@ spec:
     path: charts/ibm-license-operator
     repoURL: 'https://github.com/luisbazo/helm-charts'
     targetRevision: main
+```
 
 ##OPENSHIFT LOGGING
 
+```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -153,11 +161,11 @@ spec:
     path: charts/openshift-logging
     repoURL: 'https://github.com/luisbazo/helm-charts'
     targetRevision: main
-
-oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n openshift-logging
+```
 
 ##PROMETHEUS ALERTING
 
+```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -182,17 +190,17 @@ spec:
     path: charts/prometheus-example-app
     repoURL: 'https://github.com/luisbazo/helm-charts'
     targetRevision: main
+```
 
-
-To develop new custom grafana dashboards visit,
+If interested in developing new custom grafana dashboards please visit,
 
 https://kamsjec.medium.com/custom-grafana-dashboards-for-red-hat-openshift-container-platform-4-x-9495678b714c
 
-##PROMETHEUS EXAMPLE QUERIES
+##Some PROMETHEUS EXAMPLE QUERIES to visualize the available to RESERVE node CPU.
 
+This is important since new pods won't get scheduled in the nodes if no avaiblabe to reserve CPU is found in the cluster
 
 (sum(kube_node_status_allocatable{cluster="", node=~"ocpinstall-l7rz9-master-0", resource="cpu"}) / sum(kube_node_status_capacity{cluster="", node=~"ocpinstall-l7rz9-master-0", resource="cpu"}))*100
-
 
 sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{cluster=""}) by (node) / sum(kube_node_status_capacity{cluster="", resource="cpu"}) by (node)
 
