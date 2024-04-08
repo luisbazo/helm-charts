@@ -17,3 +17,5 @@ spec:
     - audit
     outputRefs:
     - default
+{{- end }}
+{{- end }}
