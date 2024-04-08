@@ -1,0 +1,179 @@
+{{- with .Values.transformationAdvisorConfig }}
+{{ if eq ( .enabled | toString) "true" }}
+---
+apiVersion: ta.ibm.com/v2
+kind: TransAdv
+metadata:
+  annotations:
+    operator-sdk/primary-resource: /ibm-transformation-advisor-preinstance-crb
+    operator-sdk/primary-resource-type: ClusterRoleBinding.rbac.authorization.k8s.io
+    argocd.argoproj.io/sync-wave: {{ .syncwave | quote }}
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  name: ta
+  namespace: ta-project
+  labels:
+    app.kubernetes.io/instance: ibm-transformation-advisor-instance
+    app.kubernetes.io/managed-by: ibm-transformation-advisor-manager
+    app.kubernetes.io/name: ibm-transformation-advisor
+    release: ibm-transformation-advisor-instance
+spec:
+  networkPolicy:
+    egress:
+      default:
+        - to:
+            dnsName: github.com
+          type: Allow
+        - to:
+            dnsName: github.ibm.com
+          type: Allow
+        - type: Allow
+        - type: Allow
+        - to:
+            dnsName: oauth-openshift.apps.{{.cluster}}
+          type: Allow
+      enabled: false
+    enabled: true
+  license:
+    aLicenseType: IBM Cloud Pak for Applications 5.2 - L-YQXD-3APM2Q
+    accept: true
+  route:
+    enabled: true
+    hostname: ta.apps.{{.cluster}}
+    rateLimit:
+      enabled: true
+      rateHttp: '200'
+      rateTcp: '200'
+  commonServices:
+    cloudpakId: __TA_PLACEHOLDER_CLOUDPAK_ID__
+    cloudpakName: __TA_PLACEHOLDER_CLOUDPAK_NAME__
+    cloudpakVersion: __TA_PLACEHOLDER_CLOUDPAK_VERSION__
+  transadv:
+    livenessProbe:
+      failureThreshold: 15
+      initialDelaySeconds: 120
+      periodSeconds: 5
+      timeoutSeconds: 30
+    logLevel: info
+    publicUrl: 'https://ta.apps.'{{.cluster}}
+    readinessProbe:
+      failureThreshold: 15
+      periodSeconds: 5
+      timeoutSeconds: 30
+    resources:
+      limits:
+        cpu: 16000m
+        ephemeral-storage: 20Gi
+        memory: 8Gi
+      requests:
+        cpu: 500m
+        ephemeral-storage: 3Gi
+        memory: 1Gi
+    security:
+      cipherSuites: ''
+    startupProbe:
+      failureThreshold: 6
+      periodSeconds: 10
+  couchdb:
+    livenessProbe:
+      failureThreshold: 6
+      initialDelaySeconds: 60
+      periodSeconds: 5
+      timeoutSeconds: 3
+    readinessProbe:
+      failureThreshold: 6
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 3
+    resources:
+      limits:
+        cpu: 16000m
+        ephemeral-storage: 20Gi
+        memory: 20Gi
+      requests:
+        cpu: 500m
+        ephemeral-storage: 1Gi
+        memory: 1Gi
+    security:
+      cipherSuites: ''
+      tlsVersions: ''
+  neo4j:
+    livenessProbe:
+      failureThreshold: 6
+      initialDelaySeconds: 60
+      periodSeconds: 5
+      timeoutSeconds: 3
+    logLevel: info
+    readinessProbe:
+      failureThreshold: 6
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 3
+    resources:
+      limits:
+        cpu: 16000m
+        ephemeral-storage: 5Gi
+        memory: 8Gi
+      requests:
+        cpu: 500m
+        ephemeral-storage: 1Gi
+        memory: 1Gi
+  custom:
+    landingIcon: ''
+    landingIcon2: ''
+    landingIcon3: ''
+    landingIcon4: ''
+    titleText: ''
+  authentication:
+    disabled:
+      liberty: false
+      ui: false
+    ocp:
+      apiEndpoint: 'https://api.'{{.cluster}}':6443'
+      authIssuerEndpoint: 'https://oauth-openshift.apps.'{{.cluster}}
+      secretName: transformation-advisor-secret
+    thirdParty:
+      description: 'If the Third Party Authentication is not configured, will default to use OCP OAuthClient.'
+  tls:
+    caCert: |
+      ""
+    enabled: true
+  transadvui:
+    livenessProbe:
+      failureThreshold: 15
+      initialDelaySeconds: 60
+      periodSeconds: 30
+      timeoutSeconds: 5
+    logLevel: info
+    readinessProbe:
+      failureThreshold: 15
+      initialDelaySeconds: 5
+      periodSeconds: 30
+      timeoutSeconds: 5
+    resources:
+      limits:
+        cpu: 16000m
+        ephemeral-storage: 5Gi
+        memory: 4Gi
+      requests:
+        cpu: 500m
+        ephemeral-storage: 1Gi
+        memory: 1Gi
+    useSecureCookie: 'true'
+  persistence:
+    couchdb:
+      accessMode: ReadWriteOnce
+      existingClaim: ''
+      size: 20Gi
+      storageClassName: {{.storageClass}}
+      supplementalGroups: []
+      useDynamicProvisioning: true
+    enabled: true
+    neo4j:
+      accessMode: ReadWriteOnce
+      existingClaim: ''
+      size: 5Gi
+      storageClassName: {{.storageClass}}
+      supplementalGroups: []
+      useDynamicProvisioning: true
+{{- end }}
+{{- end }}

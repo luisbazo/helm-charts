@@ -1,0 +1,43 @@
+---
+transformationAdvisorConfig:
+  enabled: true
+  storageClass: ocs-storagecluster-ceph-rbd
+  cluster: 6613a7782355a5001ee61b62.cloud.techzone.ibm.com
+  syncwave: '1'
+  namespace:
+    create: true
+    syncwave: '0'
+    displayName: 'ta-project'
+    descr: 'ta-project'
+    name: 'ta-project'
+
+
+helper-operator:
+  operators:
+    ibm-transformation-advisor:
+      enabled: true
+      syncwave: '0'
+      namespace:
+        name: openshift-operators
+        create: true
+      subscription:
+        channel: v4.2
+        approval: Automatic
+        operatorName: ibm-transformation-advisor
+        source: ibm-operator-catalog
+        sourceNamespace: openshift-marketplace
+      operatorgroup:
+        create: true
+
+helper-status-checker:
+  enabled: false
+
+  checks:
+
+    - operatorName: ibm-transformation-advisor
+      namespace:
+        name: openshift-operators
+      syncwave: 3
+
+      serviceAccount:
+        name: "status-checker-ibm-licensing"

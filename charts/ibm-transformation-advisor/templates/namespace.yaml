@@ -1,0 +1,24 @@
+{{- with .Values.transformationAdvisorConfig }}
+{{ if eq (.enabled | toString) "true" }}
+{{ if eq (.namespace.create | toString) "true" }}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .namespace.name | quote }}
+  labels:
+    openshift.io/cluster-monitoring: "true"
+    {{- include "common.labels" $ | nindent 4 }}
+  {{- if or (.namespace.descr) (.namespace.displayname) }}
+  annotations:
+    argocd.argoproj.io/sync-wave: {{ .namespace.syncwave | quote }}
+    {{- if .namespace.descr }}
+    openshift.io/description: {{ .namespace.descr }}
+    {{- end }}
+    {{- if .namespace.displayname }}
+    openshift.io/display-name: {{ .namespace.displayname }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
