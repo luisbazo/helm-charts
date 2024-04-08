@@ -1,0 +1,30 @@
+---
+helper-operator:
+  operators:
+    redhat-web-terminal:
+      enabled: true
+      syncwave: '0'
+      namespace:
+        name: openshift-operators
+        create: true
+      subscription:
+        channel: fast
+        approval: Automatic
+        operatorName: web-terminal
+        source: openshift-marketplace
+        sourceNamespace: openshift-marketplace
+      operatorgroup:
+        create: true
+
+helper-status-checker:
+  enabled: false
+
+  checks:
+
+    - operatorName: redhat-oadp-operator
+      namespace:
+        name: openshift-adp
+      syncwave: 3
+
+      serviceAccount:
+        name: "status-checker-oadp"
