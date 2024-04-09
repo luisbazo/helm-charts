@@ -11,6 +11,9 @@ metadata:
     app.kubernetes.io/instance: ibm-transformation-advisor-instance
     app.kubernetes.io/managed-by: ibm-transformation-advisor-manager
   namespace: ta-project
+  annotations:
+    argocd.argoproj.io/sync-wave: {{ .syncwave | quote }}
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   networkPolicy:
     egress:
