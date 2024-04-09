@@ -4,7 +4,7 @@ transformationAdvisorConfig:
   storageClass: ocs-storagecluster-ceph-rbd
   aLicenseType: 'IBM Cloud Pak for Applications 5.2 - L-YQXD-3APM2Q'
   cluster:
-    apiEndPoint: 'https://api.6613a7782355a5001ee61b62.cloud.techzone.ibm.com:6443'
+    apiEndpoint: 'https://api.6613a7782355a5001ee61b62.cloud.techzone.ibm.com:6443'
     authIssuerEndpoint: 'https://oauth-openshift.apps.6613a7782355a5001ee61b62.cloud.techzone.ibm.com'
     publicUrl: 'https://ta.apps.6613a7782355a5001ee61b62.cloud.techzone.ibm.com'
     hostname: ta.apps.6613a7782355a5001ee61b62.cloud.techzone.ibm.com
