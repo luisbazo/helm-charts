@@ -27,7 +27,7 @@ helper-operator:
         name: openshift-operators
         create: true
       subscription:
-        channel: v4.2
+        channel: v3.9
         approval: Automatic
         operatorName: ibm-transformation-advisor
         source: ibm-operator-catalog
