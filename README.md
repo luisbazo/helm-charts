@@ -19,7 +19,7 @@ This command is needed to provide ARGO CD with admin priviledges in the cluster.
 oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
 ```
 
-## IMPORTANT TIP: Use it with caution and Check/Update chart values.yaml file of every chart to match your environment and desired configuration ##
+**IMPORTANT TIP: Use it with caution and Check/Update helm chart values.yaml file of every chart to match your environment and desired configuration**
 
 ## ARGO APPLICATION INFRA MACHINESET
 
