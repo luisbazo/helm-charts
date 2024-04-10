@@ -1,6 +1,6 @@
 ---
 machineset:
-  prefix: ocpinstall-xnlp2
+  prefix: ocpinstall-zh2sk
   role: infra
   enabled: true
   replicas: 3
