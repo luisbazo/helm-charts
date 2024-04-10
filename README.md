@@ -7,7 +7,7 @@
 Requirements:
 
 - Openshift Container Platform
-- GITOPS Operator installed in the cluster
+- Red Hat Openshift GitOps Operator installed in the cluster
 
 Inspiration and charts examples I have forked and customized
 
@@ -223,7 +223,14 @@ spec:
     targetRevision: main
 ```
 
-## PROMETHEUS ALERTING
+## PROMETHEUS ALERTING EXAMPLES
+
+It deploys some example artifacts on prometheus and monitoring
+
+- Sample application that exports a sample prometheus metric (version)
+- Service monitor on the metrics of the sample application
+- An alarm on the metric. It fires whether (version{job="prometheus-example-app"} == 1).
+- Platform alarm to advice whether is there a node with less that 30% memory available to be reserved. It fires whether (sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{cluster=""}) by (node) / sum(kube_node_status_capacity{cluster="", resource="cpu"}) by (node) >= 0.7).
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -241,7 +248,7 @@ spec:
       selfHeal: true
   info:
     - name: Description
-      value: Deploy Openshift Logging
+      value: Deploy Prometheus alerting examples
   project: default
   source:
     helm:
