@@ -21,7 +21,7 @@ oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:opens
 
 **IMPORTANT TIP: Use it with caution and Check/Update helm chart values.yaml file of every chart to match your environment and desired configuration**
 
-## ARGO APPLICATION INFRA MACHINESET
+## APPLICATION INFRA MACHINESET
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
