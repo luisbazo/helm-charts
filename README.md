@@ -21,7 +21,7 @@ oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:opens
 
 **IMPORTANT TIP: Use it with caution and Check/Update helm chart values.yaml file of every chart to match your environment and desired configuration**
 
-## APPLICATION INFRA MACHINESET
+## ARGOCD APPLICATION INFRA MACHINESET
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -48,7 +48,7 @@ spec:
 ```
 
 
-## ODF installation
+## ARGOCD ODF installation
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -77,7 +77,7 @@ spec:
     targetRevision: main
 ```
 
-## ARGO APPLICATION OADP OPERATOR
+## ARGOCD APPLICATION OADP OPERATOR
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -107,7 +107,7 @@ spec:
 ```
 
 
-## ARGO APPLICATION IBM LICENSE SERVER
+## ARGOCD APPLICATION IBM LICENSE SERVER
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -136,7 +136,7 @@ spec:
     targetRevision: main
 ```
 
-## IBM TRANSFORMATION ADVISOR
+## ARGOCD IBM TRANSFORMATION ADVISOR
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -165,7 +165,7 @@ spec:
     targetRevision: main
 ```
 
-## Openshift Web Terminal
+## ARGOCD Openshift Web Terminal
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -194,7 +194,7 @@ spec:
     targetRevision: main
 ```
 
-## OPENSHIFT LOGGING
+## ARGOCD OPENSHIFT LOGGING
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -223,7 +223,7 @@ spec:
     targetRevision: main
 ```
 
-## PROMETHEUS ALERTING EXAMPLES
+## ARGOCD PROMETHEUS ALERTING EXAMPLES
 
 It deploys some example artifacts on prometheus and monitoring
 

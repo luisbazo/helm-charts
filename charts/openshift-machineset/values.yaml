@@ -1,6 +1,6 @@
 ---
 machineset:
-  prefix: ocpinstall-zh2sk
+  prefix: ocpinstall-5dm6r
   role: infra
   enabled: true
   replicas: 3
