@@ -1,6 +1,6 @@
 ---
 machineset:
-  prefix: ocpinstall-5dm6r
+  prefix: ocpinstall-9tfj4
   role: infra
   enabled: true
   replicas: 3
@@ -10,11 +10,11 @@ machineset:
     diskGiB: 120
     userDataSecret: worker-user-data
     credentialsSecret: vsphere-cloud-credentials
-    networkName: gym-6630026hom-u4mh8u2p-segment
+    networkName: gym-6630026hom-pohx5w5d-segment
     numCPUs: 10
     datacenter: IBMCloud
-    datastore: '/IBMCloud/datastore/gym-6630026hom-u4mh8u2p-storage'
-    folder: '/IBMCloud/vm/ocpgym-wdc/gym-6630026hom-u4mh8u2p/IPI'
-    resourcePool: '/IBMCloud/host/ocpgym-wdc/Resources/Cluster Resource Pool/Gym Member Resource Pool/gym-6630026hom-u4mh8u2p'
+    datastore: '/IBMCloud/datastore/gym-6630026hom-pohx5w5d-storage'
+    folder: '/IBMCloud/vm/ocpgym-wdc/gym-6630026hom-pohx5w5d'
+    resourcePool: '/IBMCloud/host/ocpgym-wdc/Resources/Cluster Resource Pool/Gym Member Resource Pool/gym-6630026hom-pohx5w5d'
     server: ocpgymwdc-vc.techzone.ibm.local
     memoryMiB: 26624
