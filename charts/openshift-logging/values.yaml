@@ -75,7 +75,7 @@ loggingConfig:
 helper-operator:
   operators:
     elasticsearch-operator:
-      enabled: true
+      enabled: false
       syncwave: '0'
       namespace:
         name: openshift-operators-redhat
@@ -90,7 +90,7 @@ helper-operator:
         create: true
 
     loki-operator:
-      enabled: false
+      enabled: true
       syncwave: '0'
       namespace:
         name: openshift-operators-redhat
@@ -208,7 +208,7 @@ helper-objectstore:
 
 helper-loki-bucket-secret:
 
-  enabled: false
+  enabled: true
 
   # -- Syncwave for Argo CD.
   # @default -- 3
@@ -229,7 +229,7 @@ helper-loki-bucket-secret:
 helper-lokistack:
   # -- Enable or disable LokiStack configuration
   # @default -- false
-  enabled: f
+  enabled: true
 
   # -- Name of the LokiStack object
   name: logging-loki
