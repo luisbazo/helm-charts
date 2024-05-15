@@ -151,7 +151,7 @@ helper-objectstore:
 
   # -- Enable objectstore configuration
   # @default -- false
-  enabled: false
+  enabled: true
 
   # -- Syncwave for Argo CD
   # @default - 1
