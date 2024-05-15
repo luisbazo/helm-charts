@@ -1,6 +1,6 @@
 ---
 machineset:
-  prefix: ocpinstall-9tfj4
+  prefix: ocpinstall-qlnbx
   role: infra
   enabled: true
   replicas: 3
