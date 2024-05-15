@@ -181,7 +181,7 @@ helper-objectstore:
     type: pv-pool
 
   # -- The StorageClass the BackingStore is based on
-  baseStorageClass: gp3-csi
+  baseStorageClass: openshift-storage.noobaa.io
 
   # -- Name of the StorageClass that shall be created for the bucket.
   storageclass_name: bucket-storage-class
