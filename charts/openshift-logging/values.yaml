@@ -151,7 +151,7 @@ helper-objectstore:
 
   # -- Enable objectstore configuration
   # @default -- false
-  enabled: true
+  enabled: false
 
   # -- Syncwave for Argo CD
   # @default - 1
@@ -190,7 +190,7 @@ helper-objectstore:
   bucket:
     # -- Shall a new bucket be enabled?
     # @default -- false
-    enabled: false
+    enabled: true
 
     # -- Name of the bucket that shall be created
     name: logging-loki-s3
