@@ -1,6 +1,6 @@
 ---
 # Type can value elasticsearch or loki
-type: elasticsearch
+type: loki
 
 logforwarderConfig:
   enabled: true
@@ -39,11 +39,11 @@ loggingConfig:
 
     retentionPolicy:
       application:
-        maxAge: 1d
+        maxAge: 2d
       audit:
-        maxAge: 1d
+        maxAge: 2d
       infra:
-        maxAge: 1d
+        maxAge: 2d
     visualization:
       # The type of Visualization to configure
       # Could be either Kibana or ocp-console
