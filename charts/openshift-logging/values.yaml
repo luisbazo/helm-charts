@@ -39,11 +39,11 @@ loggingConfig:
 
     retentionPolicy:
       application:
-        maxAge: 2d
+        maxAge: 1d
       audit:
-        maxAge: 2d
+        maxAge: 1d
       infra:
-        maxAge: 2d
+        maxAge: 1d
     visualization:
       # The type of Visualization to configure
       # Could be either Kibana or ocp-console
@@ -280,7 +280,7 @@ helper-lokistack:
       - version: v12
         # -- EffectiveDate is the date in UTC that the schema will be applied on. To ensure readibility of logs, this date should be before the current date in UTC.
         # @default -- 2022-06-01
-        effectiveDate: "2022-06-01"
+        effectiveDate: "2024-05-16"
 
   # -- Storage class name defines the storage class for ingester/querier PVCs.
   # @default -- gp3-csi
