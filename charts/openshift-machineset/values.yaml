@@ -15,6 +15,6 @@ machineset:
     datacenter: IBMCloud
     datastore: '/IBMCloud/datastore/gym-6630026hom-pohx5w5d-storage'
     folder: '/IBMCloud/vm/ocpgym-wdc/gym-6630026hom-pohx5w5d'
-    resourcePool: '/IBMCloud/host/ocpgym-wdc/Resources/Cluster Resource Pool/Gym Member Resource Pool/gym-6630026hom-pohx5w5d'
-    server: ocpgymwdc-vc.techzone.ibm.local
+    resourcePool: '/IBMCloud/host/ocp-gym/Resources/Cluster Resource Pool/Gym Member Resource Pool/gym-6630026hom-pohx5w5d'
+    server: ocpgym-vc.techzone.ibm.local
     memoryMiB: 26624
