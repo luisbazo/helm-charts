@@ -10,7 +10,7 @@ machineset:
     diskGiB: 120
     userDataSecret: worker-user-data
     credentialsSecret: vsphere-cloud-credentials
-    networkName: gym-6630026hom-pohx5w5d-segment
+    networkName: gym-6630026hom-p6qlefk7-segment
     numCPUs: 10
     datacenter: IBMCloud
     datastore: '/IBMCloud/datastore/gym-6630026hom-p6qlefk7-storage'
