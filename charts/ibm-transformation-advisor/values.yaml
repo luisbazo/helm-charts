@@ -1,7 +1,7 @@
 ---
 transformationAdvisorConfig:
   enabled: true
-  storageClass: ocs-storagecluster-ceph-rbd
+  storageClass: ocs-external-storagecluster-ceph-rbd
   aLicenseType: 'IBM Cloud Pak for Applications 5.2 - L-YQXD-3APM2Q'
   cluster:
     apiEndpoint: 'https://api.itz-xseo82.infra01-lb.fra02.techzone.ibm.com:6443'
