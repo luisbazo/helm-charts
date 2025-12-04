@@ -16,7 +16,7 @@ sources:
   - https://github.com/tjungbauer/openshift-clusterconfig-gitops
 dependencies:
   - name: sonarqube
-    version: ~10.1.0
+    version: ~2025.5.0
     repository: https://SonarSource.github.io/helm-chart-sonarqube
     condition: sonarqube.enabled
 keywords:
