@@ -42,8 +42,8 @@ sonarqube:
   containerSecurityContext:
     # Sonarqube dockerfile creates sonarqube user as UID and GID 0
     # Those default are used to match pod security standard restricted as least privileged approach
-    allowPrivilegeEscalation: false
-    runAsNonRoot: true
+    allowPrivilegeEscalation: true
+    runAsNonRoot: false
     seccompProfile:
       type: RuntimeDefault
     capabilities:
