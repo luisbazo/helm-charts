@@ -22,7 +22,7 @@ sonarqube:
     # -- OpenShift should be enabled
     enabled: true
     # -- The SCC should be created for OpenShift deployment.
-    createSCC: true
+    # -- createSCC: true
   # -- Keep the data persistent
   persistence:
     enabled: true
