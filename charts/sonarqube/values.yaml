@@ -29,6 +29,9 @@ sonarqube:
   # -- Enable Network Polocies ... maybe I should set this to true
   networkPolicy:
     enabled: false
+    
+  # -- Monitoring passcode
+  monitoringPasscode: mymonitoringpasscode  
 
   # -- Endable ingress, using the defind endpoint.
   ingress:
