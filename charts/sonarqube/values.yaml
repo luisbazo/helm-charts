@@ -33,22 +33,6 @@ sonarqube:
   monitoringPasscode: mymonitoringpasscode  
   # -- Set up the edition to use developer or enterprise
   edition: "developer"
-
-  # The current section contains the default values set in a generic Kubernetes cluster. If you are using OpenShift, you should not set any specific fsGroup.
-  securityContext:
-
-  # Set security context for sonarqube container.
-  # The current section contains the default values set in a generic Kubernetes cluster. If you are using OpenShift, you should not set any specific UID or GID to be used for the execution.
-  containerSecurityContext:
-    # Sonarqube dockerfile creates sonarqube user as UID and GID 0
-    # Those default are used to match pod security standard restricted as least privileged approach
-    allowPrivilegeEscalation: true
-    runAsNonRoot: false
-    seccompProfile:
-      type: RuntimeDefault
-    capabilities:
-      drop: ["ALL"]
-    #   readOnlyRootFilesystem: true
   
   # -- Endable ingress, using the defind endpoint.
   ingress:
