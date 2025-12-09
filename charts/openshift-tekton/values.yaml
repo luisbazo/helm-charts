@@ -5,12 +5,12 @@ helper-operator:
       enabled: true
       syncwave: '0'
       namespace:
-        name: cicd
+        name: default
         create: true
       subscription:
         channel: latest
         approval: Automatic
-        operatorName: openshift-pipelines-operator-rh-latest-redhat-operators-openshift-marketplace
+        operatorName: openshift-pipelines-operator-rh
         source: redhat-operators
         sourceNamespace: openshift-marketplace
       operatorgroup:
@@ -21,9 +21,9 @@ helper-status-checker:
 
   checks:
 
-    - operatorName: openshift-pipelines-operator-rh-latest-redhat-operators-openshift-marketplace
+    - operatorName: openshift-pipelines-operator-rh
       namespace:
-        name: cicd
+        name: default
       syncwave: 3
 
       serviceAccount:
