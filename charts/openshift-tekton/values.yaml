@@ -5,7 +5,7 @@ helper-operator:
       enabled: true
       syncwave: '0'
       namespace:
-        name: default
+        name: openshift-operators
         create: true
       subscription:
         channel: latest
@@ -23,7 +23,7 @@ helper-status-checker:
 
     - operatorName: openshift-pipelines-operator-rh
       namespace:
-        name: default
+        name: openshift-operators
       syncwave: 3
 
       serviceAccount:
