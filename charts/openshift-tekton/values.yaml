@@ -5,7 +5,7 @@ helper-operator:
       enabled: true
       syncwave: '0'
       namespace:
-        name: openshift-operators
+        name: openshift-delete
         create: true
       subscription:
         channel: latest
